@@ -11,12 +11,12 @@ function SignUp() {
     const [SignUpPwd, setSignUpPwd] = useState("");
     const [SignUpImage, setSignUpImage] = useState("");
 
-    const [SignUpEmailOrUserName, setSignUpEmailOrUserName] = useState("");
-    const [SignInSignUpPwd, setSignInSignUpPwd] = useState("");
+    const [SignInEmailOrUserName, setSignInEmailOrUserName] = useState("");
+    const [SignInPwd, setSignInPwd] = useState("");
 
-    const [LognInImage, setLognInImage] = useState("https://winkeyecare.com/wp-content/uploads/2013/03/Empty-Profile-Picture-450x450.jpg");
     const [LogInUserName, setLogInUserName] = useState("User Name")
     const [LogInUserEmail, setLogInUserEmail] = useState("Email")
+    const [LognInImage, setLognInImage] = useState("https://winkeyecare.com/wp-content/uploads/2013/03/Empty-Profile-Picture-450x450.jpg");
 
 
     function SignUp(e) {
@@ -52,22 +52,22 @@ function SignUp() {
 
         e.preventDefault();
 
-        if (SignUpEmailOrUserName === "" || SignInSignUpPwd === "") {
+        if (SignInEmailOrUserName === "" || SignInPwd === "") {
             alert("Fill the Input")
         }
 
         else {
-            const UserFound = User.find((user) => user.UserEmail === SignUpEmailOrUserName || user.UserName === SignUpEmailOrUserName && user.UserPwd === SignInSignUpPwd && user.Profile);
+            const UserFound = User.find((user) => (user.UserEmail === SignInEmailOrUserName || user.UserName === SignInEmailOrUserName) && user.UserPwd === SignInPwd && user.Profile);
 
             if (!UserFound) {
                 alert("Id Not Found")
             }
 
             else {
-                setLogInUserName(UserFound.UserName)
-                setLognInImage(UserFound.Profile)
-                setLogInUserEmail(UserFound.UserEmail)
                 alert("Log In")
+                setLogInUserName(UserFound.UserName)
+                setLogInUserEmail(UserFound.UserEmail)
+                setLognInImage(UserFound.Profile)
             }
         }
     }
@@ -109,7 +109,7 @@ function SignUp() {
                                 type="text"
                                 onChange={(e) => { setSignUpImage(e.target.value) }}
                                 className='form-control border border-dark mb-4'
-                                placeholder='Password' />
+                                placeholder='Profile Image' />
 
                             <input type="submit" className='btn btn-success' />
                         </form>
@@ -125,14 +125,14 @@ function SignUp() {
                             <label htmlFor="UserName">Email or UserName</label>
                             <input
                                 type="text"
-                                onChange={(e) => { setSignUpEmailOrUserName(e.target.value) }}
+                                onChange={(e) => { setSignInEmailOrUserName(e.target.value) }}
                                 className='form-control border border-dark mb-3'
                                 placeholder='Email' />
 
-                            <label htmlFor="UserName">Password</label>
+                            <label htmlFor="UserPassword">Password</label>
                             <input
                                 type="password"
-                                onChange={(e) => { setSignInSignUpPwd(e.target.value) }}
+                                onChange={(e) => { setSignInPwd(e.target.value) }}
                                 className='form-control border border-dark mb-4'
                                 placeholder='Password' />
 
@@ -151,9 +151,9 @@ function SignUp() {
                                 return (
                                     <>
                                         <center>
-                                            <div className="border border-1 border-primary">
+                                            <div className="border border-1 border-primary p-3">
                                                 <h1>All Users</h1>
-                                                <div className='border border-1 border-danger'>
+                                                <div className='border border-1 border-danger p-4'>
                                                     <div>
                                                         <h4>{User[index].UserName}</h4>
                                                         <h4>{User[index].UserEmail}</h4>
@@ -171,9 +171,9 @@ function SignUp() {
 
                     <div className="col-6">
                         <center>
-                            <div className="border border-1 border-primary">
+                            <div className="border border-1 border-primary p-3">
                                 <h1>LogIn User</h1>
-                                <div className='border border-1 border-danger'>
+                                <div className='border border-1 border-danger p-4'>
                                     <div>
                                         <h4>{LogInUserName}</h4>
                                         <h4>{LogInUserEmail}</h4>
