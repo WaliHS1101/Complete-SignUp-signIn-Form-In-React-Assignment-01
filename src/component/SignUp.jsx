@@ -127,7 +127,7 @@ function SignUp() {
                                 type="text"
                                 onChange={(e) => { setSignInEmailOrUserName(e.target.value) }}
                                 className='form-control border border-dark mb-3'
-                                placeholder='Email' />
+                                placeholder='Email or UserName' />
 
                             <label htmlFor="UserPassword">Password</label>
                             <input
