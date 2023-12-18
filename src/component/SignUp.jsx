@@ -6,13 +6,13 @@ function SignUp() {
 
     const [User, setUser] = useState(Users);
 
+    const [SignInEmailOrUserName, setSignInEmailOrUserName] = useState("");
+    const [SignInPwd, setSignInPwd] = useState("");
+
     const [SignUpName, setSignUpName] = useState("");
     const [SignUpEmail, setSignUpEmail] = useState("");
     const [SignUpPwd, setSignUpPwd] = useState("");
     const [SignUpImage, setSignUpImage] = useState("");
-
-    const [SignInEmailOrUserName, setSignInEmailOrUserName] = useState("");
-    const [SignInPwd, setSignInPwd] = useState("");
 
     const [LogInUserName, setLogInUserName] = useState("User Name")
     const [LogInUserEmail, setLogInUserEmail] = useState("Email")
@@ -140,6 +140,7 @@ function SignUp() {
                         </form>
                     </center>
                 </div >
+
             </div >
 
             <div className="container">
@@ -183,6 +184,7 @@ function SignUp() {
                             </div>
                         </center>
                     </div>
+
                 </div>
             </div >
         </>
